@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>moon_587</title>
+<meta name="description" content="moon_587 프로필 · Discord, Roblox, YouTube, GitHub">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#05070c">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef1f6">
+<meta property="og:type" content="website">
+<meta property="og:title" content="moon_587">
+<meta property="og:description" content="moon_587 프로필 · Discord, Roblox, YouTube, GitHub">
+<meta property="og:url" content="https://asdaw623.github.io/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070c'/%3E%3Cpath d='M23.25 14.02A20 20 0 1 1 23.25 49.98A18 18 0 1 0 23.25 14.02Z' fill='%23eef1f8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+
+<script>
+window.CONFIG = {
+  name: "moon_587",
+  bio: "",
+  status: { text: "응답 가능", color: "#22c55e" },
+  avatar: "",
+  enterScreen: true,
+  enterText: "눌러주세요 <3",
+  skyMoon: true,
+  rain: { enabled: true, density: 1, wind: -0.12, splash: true },
+  links: [
+    { icon: "discord", label: "Discord", copy: "moon_587" },
+    { icon: "roblox",  label: "Roblox",  url: "https://www.roblox.com/users/7437056690/profile" },
+    { icon: "youtube", label: "YouTube", url: "https://www.youtube.com/@iAXs._.s" },
+    { icon: "github",  label: "GitHub",  url: "https://github.com/asdaw623" },
+  ],
+};
+</script>
+<script>
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem("profile-theme"); } catch (e) {}
+    if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+  })();
+</script>
+
+<style>
+  /* Layout: a wide moonlit profile card (avatar left, info right; stacked on phones) over a rain canvas with a moon in the sky; theme control pinned top-left */
+  @property --hole { syntax: "<length>"; inherits: false; initial-value: 0px; }
+
+  :root {
+    --bg: #05070c;
+    --fg: #f3f5fa;
+    --muted: #9aa3b6;
+    --card: rgba(9, 11, 18, 0.93);
+    --border: rgba(200, 214, 255, 0.12);
+    --glass: rgba(200, 214, 255, 0.06);
+    --glass-border: rgba(200, 214, 255, 0.11);
+    --glow: 196, 212, 255;
+    --glow-strength: 1;
+    --rain: 190, 205, 235;
+    --rain-strength: 1;
+    --overlay: rgba(4, 6, 11, 0.9);
+    --moon-lit: #eef1f8;
+    --moon-shade: rgba(238, 241, 248, 0.07);
+    --sky-moon: #f2f4fa;
+    --sky-moon-edge: #b9c3d9;
+    --sky-moon-glow: rgba(196, 212, 255, 0.22);
+    --sky-moon-opacity: 0.85;
+    --shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+    --font: "Geist", "Noto Sans KR", -apple-system, BlinkMacSystemFont, system-ui,
+      "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color-scheme: dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #eef1f6;
+      --fg: #0b0e16;
+      --muted: #525a6d;
+      --card: rgba(255, 255, 255, 0.9);
+      --border: rgba(12, 18, 40, 0.1);
+      --glass: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(12, 18, 40, 0.09);
+      --glow: 40, 52, 92;
+      --glow-strength: 0.45;
+      --rain: 52, 62, 90;
+      --rain-strength: 0.65;
+      --overlay: rgba(238, 241, 246, 0.9);
+      --moon-lit: #1b2132;
+      --moon-shade: rgba(27, 33, 50, 0.08);
+      --sky-moon: #ffffff;
+      --sky-moon-edge: #d9dfeb;
+      --sky-moon-glow: rgba(255, 255, 255, 0.8);
+      --sky-moon-opacity: 0.95;
+      --shadow: 0 30px 80px rgba(20, 30, 60, 0.12);
+      color-scheme: light;
+    }
+  }
+  :root[data-theme="light"] {
+    --bg: #eef1f6;
+    --fg: #0b0e16;
+    --muted: #525a6d;
+    --card: rgba(255, 255, 255, 0.9);
+    --border: rgba(12, 18, 40, 0.1);
+    --glass: rgba(255, 255, 255, 0.72);
+    --glass-border: rgba(12, 18, 40, 0.09);
+    --glow: 40, 52, 92;
+    --glow-strength: 0.45;
+    --rain: 52, 62, 90;
+    --rain-strength: 0.65;
+    --overlay: rgba(238, 241, 246, 0.9);
+    --moon-lit: #1b2132;
+    --moon-shade: rgba(27, 33, 50, 0.08);
+    --sky-moon: #ffffff;
+    --sky-moon-edge: #d9dfeb;
+    --sky-moon-glow: rgba(255, 255, 255, 0.8);
+    --sky-moon-opacity: 0.95;
+    --shadow: 0 30px 80px rgba(20, 30, 60, 0.12);
+    color-scheme: light;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  button { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+  /* Sky: moon behind the rain, vignette over both */
+  .sky-moon {
+    position: fixed; z-index: 0; pointer-events: none;
+    top: calc(8vh + env(safe-area-inset-top, 0px));
+    right: calc(12vw + env(safe-area-inset-right, 0px));
+    width: clamp(52px, 7.5vw, 104px); max-width: 100%; aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 36% 34%, var(--sky-moon) 0%, var(--sky-moon) 38%, var(--sky-moon-edge) 100%);
+    box-shadow:
+      0 0 40px 6px var(--sky-moon-glow),
+      0 0 140px 50px rgba(var(--glow), calc(0.06 * var(--glow-strength)));
+    opacity: var(--sky-moon-opacity);
+  }
+  #rain {
+    position: fixed; inset: 0;
+    width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+  }
+  .vignette {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 55% 45% at 84% 10%, rgba(var(--glow), calc(0.08 * var(--glow-strength))), transparent 70%),
+      radial-gradient(ellipse at 50% 45%, transparent 45%, var(--bg) 100%);
+  }
+
+  .top-l { position: fixed; z-index: 20; top: calc(16px + env(safe-area-inset-top, 0px)); left: calc(16px + env(safe-area-inset-left, 0px)); }
+
+  .icon-btn {
+    width: 40px; height: 40px;
+    display: grid; place-items: center;
+    border-radius: 50%;
+    border: 0; background: transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .icon-btn:hover { background: var(--glass); }
+  .icon-btn:active { transform: scale(0.92); }
+  .icon-btn svg { width: 20px; height: 20px; }
+  .i-moon { display: none; }
+  .is-light .i-sun { display: none; }
+  .is-light .i-moon { display: block; }
+
+  /* Card */
+  .stage {
+    position: relative; z-index: 1;
+    min-height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    padding-block: 76px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  .card-wrap {
+    --angle: 180deg;
+    --prox: 0;
+    position: relative;
+    width: 100%; max-width: 760px;
+  }
+  .card-glow {
+    position: absolute; inset: 0; border-radius: 24px; pointer-events: none;
+    background: conic-gradient(from calc(var(--angle) - 70deg),
+      transparent 0deg, rgba(var(--glow), 0.6) 70deg, transparent 140deg);
+    filter: blur(30px);
+    opacity: calc(var(--prox) * var(--glow-strength));
+  }
+  .card {
+    position: relative;
+    border-radius: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 50px rgba(var(--glow), calc(0.09 * var(--glow-strength))), var(--shadow);
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+  }
+  .card-edge {
+    position: absolute; inset: -1px; border-radius: inherit; padding: 1.5px;
+    pointer-events: none;
+    background: conic-gradient(from calc(var(--angle) - 45deg),
+      transparent 0deg, rgba(var(--glow), 1) 45deg, transparent 90deg);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: var(--prox);
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+    background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(var(--glow), calc(0.06 * var(--glow-strength))), transparent 45%);
+    opacity: var(--inside, 0);
+    transition: opacity 0.4s ease;
+  }
+
+  .card-body {
+    position: relative; z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center; align-items: center;
+    gap: 22px;
+    text-align: center;
+    padding: 36px 20px 30px;
+  }
+  .avatar {
+    width: 132px; height: 132px;
+    border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--border);
+    background: var(--glass);
+    box-shadow:
+      0 0 0 6px rgba(var(--glow), 0.04),
+      12px -10px 34px -14px rgba(var(--glow), 0.6),
+      0 12px 40px rgba(0, 0, 0, 0.35);
+  }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .info {
+    min-width: 0; width: 100%;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .name {
+    margin: 0;
+    font-size: clamp(34px, 7vw, 52px);
+    font-weight: 800; letter-spacing: -0.035em; line-height: 1.05;
+    overflow-wrap: anywhere; text-wrap: balance;
+  }
+  .name .tag {
+    margin-left: 0.12em;
+    font-family: var(--mono);
+    font-size: 0.42em; font-weight: 500; letter-spacing: 0;
+    color: var(--muted);
+  }
+  .bio { margin: 8px 0 0; max-width: 46ch; color: var(--muted); font-size: 15px; line-height: 1.55; }
+  .status {
+    --status: #22c55e;
+    margin-top: 14px;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 12px; border-radius: 999px;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    font-size: 13px; font-weight: 600;
+  }
+  .status .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--status);
+    animation: ping 2s ease-out infinite;
+  }
+  @keyframes ping {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--status) 60%, transparent); }
+    70%, 100% { box-shadow: 0 0 0 8px transparent; }
+  }
+
+  /* Links: labeled glass tiles, 2 per row */
+  .links {
+    margin-top: 22px;
+    width: 100%; max-width: 440px;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;
+  }
+  .link {
+    display: flex; align-items: center; gap: 10px;
+    height: 44px; padding: 0 12px 0 14px;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: var(--glass); color: var(--fg);
+    font-size: 14px; font-weight: 600; text-decoration: none; text-align: left;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(.2, .8, .2, 1), border-color 0.2s ease, box-shadow 0.25s ease;
+  }
+  .link .ico { display: grid; place-items: center; width: 18px; height: 18px; flex: none; }
+  .link .ico svg { width: 18px; height: 18px; display: block; }
+  .link .lbl { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .link .end {
+    display: grid; place-items: center; width: 14px; height: 14px; flex: none;
+    color: var(--muted);
+    transition: transform 0.25s ease, color 0.2s ease;
+  }
+  .link .end svg { width: 14px; height: 14px; display: block; }
+  .link:hover, .link:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(var(--glow), 0.32);
+    box-shadow: 0 10px 28px -12px rgba(var(--glow), calc(0.6 * var(--glow-strength)));
+  }
+  .link:hover .end, .link:focus-visible .end { color: var(--fg); }
+  .link:hover .end-go, .link:focus-visible .end-go { transform: translate(2px, -2px); }
+  .link:active { transform: translateY(0) scale(0.98); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(.2, .8, .2, 1);
+    transition-delay: var(--d, 0ms);
+  }
+  body.entered .reveal { opacity: 1; transform: none; }
+
+  /* Enter screen: a crescent that fills into a full moon, then opens like an iris */
+  .enter {
+    position: fixed; inset: 0; z-index: 100;
+    display: grid; place-items: center;
+    cursor: pointer; user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .enter:focus-visible { outline: none; }
+  .enter.gone { pointer-events: none; }
+  .enter-veil {
+    position: absolute; inset: 0;
+    background: var(--overlay);
+    -webkit-mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent var(--hole), #000 calc(var(--hole) + 1px));
+    mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent var(--hole), #000 calc(var(--hole) + 1px));
+    transition: --hole 1.1s cubic-bezier(.65, 0, .35, 1), opacity 0.5s ease 0.75s;
+  }
+  .enter.gone .enter-veil { opacity: 0; }
+  .enter-inner {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: 22px;
+    animation: float 4s ease-in-out infinite;
+    transition: opacity 0.35s ease;
+  }
+  .enter.gone .enter-inner { opacity: 0; }
+  .enter-moon {
+    --s: 84px;
+    position: relative;
+    display: block;
+    width: var(--s); height: var(--s); border-radius: 50%;
+    background: var(--moon-shade);
+    box-shadow: inset -15px 0 0 0 var(--moon-lit), 0 0 36px -8px rgba(var(--glow), 0.4);
+    transition: box-shadow 0.5s cubic-bezier(.3, .7, .2, 1), transform 0.5s cubic-bezier(.3, .7, .2, 1);
+  }
+  .enter-moon::after {
+    content: ""; position: absolute; inset: -18px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(var(--glow), calc(0.16 * var(--glow-strength))), transparent 70%);
+    animation: breathe 3.2s ease-in-out infinite;
+  }
+  .enter:hover .enter-moon, .enter:focus-visible .enter-moon {
+    box-shadow: inset -24px 0 0 0 var(--moon-lit), 0 0 46px -6px rgba(var(--glow), 0.5);
+  }
+  .enter.opening .enter-moon {
+    box-shadow: inset calc(-1 * var(--s)) 0 0 0 var(--moon-lit), 0 0 70px 4px rgba(var(--glow), 0.55);
+  }
+  .enter.gone .enter-moon { transform: scale(1.18); }
+  .enter p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  @keyframes float { 50% { transform: translateY(-6px); } }
+  @keyframes breathe { 50% { opacity: 0.35; } }
+
+  .toast {
+    position: fixed; left: 50%; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); z-index: 120;
+    transform: translate(-50%, 16px);
+    max-width: calc(100vw - 32px);
+    padding: 10px 16px; border-radius: 12px;
+    background: var(--fg); color: var(--bg);
+    font-size: 14px; font-weight: 600; text-align: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    user-select: text;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); pointer-events: auto; }
+
+  @media (min-width: 720px) {
+    .card-body {
+      grid-template-columns: auto minmax(0, 1fr);
+      justify-items: start;
+      gap: 44px;
+      text-align: left;
+      padding: 44px 48px;
+    }
+    .avatar { width: 168px; height: 168px; }
+    .info { align-items: flex-start; }
+  }
+  @media (min-width: 1024px) {
+    .avatar { width: 184px; height: 184px; }
+  }
+  @media (max-width: 480px) {
+    .card-body { padding: 30px 16px 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      transition-delay: 0ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="sky-moon" id="skyMoon" aria-hidden="true"></div>
+<canvas id="rain" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<div class="top-l reveal" style="--d:500ms">
+  <button class="icon-btn" id="themeBtn" type="button" aria-label="테마 전환">
+    <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+    <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+  </button>
+</div>
+
+<main class="stage">
+  <div class="card-wrap" id="cardWrap">
+    <div class="card-glow" aria-hidden="true"></div>
+    <article class="card" id="card">
+      <span class="card-edge" aria-hidden="true"></span>
+      <div class="card-body">
+        <div class="avatar reveal" style="--d:150ms"><img id="avatar" alt=""></div>
+        <div class="info">
+          <h1 class="name reveal" id="name" style="--d:250ms"></h1>
+          <p class="bio reveal" id="bio" style="--d:320ms"></p>
+          <div class="status reveal" id="status" style="--d:390ms">
+            <span class="dot" aria-hidden="true"></span><span id="statusText"></span>
+          </div>
+          <nav class="links reveal" id="links" style="--d:460ms" aria-label="링크"></nav>
+        </div>
+      </div>
+    </article>
+  </div>
+</main>
+
+<div class="enter" id="enter" role="button" tabindex="0" aria-label="입장하기">
+  <div class="enter-veil" id="enterVeil"></div>
+  <div class="enter-inner">
+    <span class="enter-moon" id="enterMoon" aria-hidden="true"></span>
+    <p id="enterText"></p>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  const C = window.CONFIG || {};
+  const root = document.documentElement;
+  const body = document.body;
+  const $ = (s) => document.querySelector(s);
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const canHover = window.matchMedia("(hover: hover)").matches;
+  const prefersLight = window.matchMedia("(prefers-color-scheme: light)");
+
+  function storeSet(key, val) {
+    try { localStorage.setItem(key, val); } catch (e) {}
+  }
+
+  /* Icons: Simple Icons (CC0), Lucide (ISC) */
+  const fill = (d) => `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="${d}"/></svg>`;
+  const stroke = (inner) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+  const ICONS = {
+    discord: fill("M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"),
+    roblox: fill("M18.926 23.998 0 18.892 5.075.002 24 5.108ZM15.348 10.09l-5.282-1.453-1.414 5.273 5.282 1.453z"),
+    youtube: fill("M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"),
+    github: fill("M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"),
+    link: stroke('<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>'),
+  };
+  const END_GO = stroke('<path d="M7 7h10v10"/><path d="M7 17 17 7"/>');
+  const END_COPY = stroke('<rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>');
+
+  const toastEl = $("#toast");
+  let toastTimer = 0;
+  function toast(msg, ms) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), ms || 2200);
+  }
+
+  let entered = false;   // enter screen was clicked
+  let revealed = false;  // profile content is showing
+
+  function fallbackAvatar(name) {
+    const ch = (Array.from((name || "?").trim())[0] || "?")
+      .toUpperCase().replace(/&/g, "&amp;").replace(/</g, "&lt;");
+    const svg =
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">` +
+      `<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">` +
+      `<stop offset="0" stop-color="#3b4357"/><stop offset="1" stop-color="#0b0e16"/></linearGradient></defs>` +
+      `<rect width="200" height="200" fill="url(#g)"/>` +
+      `<text x="100" y="104" text-anchor="middle" dominant-baseline="middle" ` +
+      `font-family="Geist, 'Noto Sans KR', sans-serif" font-size="96" font-weight="700" fill="#f3f5fa">${ch}</text></svg>`;
+    return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+  }
+  function setImg(img, src, fallback) {
+    img.onerror = () => { img.onerror = null; img.src = fallback; };
+    img.src = src || fallback;
+  }
+
+  /* Profile */
+  const fullName = C.name || "";
+  const nameEl = $("#name");
+  const cut = fullName.lastIndexOf("_");
+  if (cut > 0 && cut < fullName.length - 1) {
+    nameEl.textContent = fullName.slice(0, cut);
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = fullName.slice(cut);
+    nameEl.appendChild(tag);
+  } else {
+    nameEl.textContent = fullName;
+  }
+  $("#bio").textContent = C.bio || "";
+  if (!C.bio) $("#bio").hidden = true;
+  const avatarFallback = fallbackAvatar(fullName);
+  setImg($("#avatar"), C.avatar, avatarFallback);
+  $("#avatar").alt = fullName + " 프로필 사진";
+  if (C.skyMoon === false) $("#skyMoon").hidden = true;
+
+  const statusEl = $("#status");
+  if (C.status && C.status.text) {
+    $("#statusText").textContent = C.status.text;
+    if (C.status.color) statusEl.style.setProperty("--status", C.status.color);
+  } else {
+    statusEl.hidden = true;
+  }
+
+  /* Links */
+  const linksEl = $("#links");
+  (C.links || []).forEach((l) => {
+    const isCopy = typeof l.copy === "string" && l.copy;
+    const el = document.createElement(isCopy ? "button" : "a");
+    el.className = "link";
+    el.innerHTML =
+      `<span class="ico">${ICONS[l.icon] || ICONS.link}</span>` +
+      `<span class="lbl"></span>` +
+      `<span class="end ${isCopy ? "end-copy" : "end-go"}">${isCopy ? END_COPY : END_GO}</span>`;
+    el.querySelector(".lbl").textContent = l.label || l.icon;
+    if (isCopy) {
+      el.type = "button";
+      el.title = `${l.copy} · 클릭해서 복사`;
+      el.setAttribute("aria-label", `${l.label} 아이디 복사 (${l.copy})`);
+      el.addEventListener("click", () => {
+        const shown = () => toast(`${l.label} 아이디: ${l.copy}`, 4000);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(l.copy).then(
+            () => toast(`${l.label} 아이디 복사됨: ${l.copy}`),
+            shown
+          );
+        } else {
+          shown();
+        }
+      });
+    } else {
+      el.href = l.url || "#";
+      el.target = "_blank";
+      el.rel = "noopener noreferrer";
+    }
+    linksEl.appendChild(el);
+  });
+  if (!linksEl.children.length) linksEl.hidden = true;
+
+  /* Theme */
+  const themeBtn = $("#themeBtn");
+  let rainRGB = "190, 205, 235";
+  let rainStrength = 1;
+  function currentTheme() {
+    const t = root.dataset.theme;
+    if (t === "light" || t === "dark") return t;
+    return prefersLight.matches ? "light" : "dark";
+  }
+  function syncTheme() {
+    const cs = getComputedStyle(root);
+    rainRGB = cs.getPropertyValue("--rain").trim() || rainRGB;
+    rainStrength = parseFloat(cs.getPropertyValue("--rain-strength")) || 1;
+    const light = currentTheme() === "light";
+    themeBtn.classList.toggle("is-light", light);
+    themeBtn.setAttribute("aria-label", light ? "다크 모드로" : "라이트 모드로");
+    if (reduceMotion) drawRain(0);
+  }
+  themeBtn.addEventListener("click", () => {
+    const next = currentTheme() === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    storeSet("profile-theme", next);
+  });
+  new MutationObserver(syncTheme).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+  if (prefersLight.addEventListener) prefersLight.addEventListener("change", syncTheme);
+
+  /* Rain: drops that land on top of the card splash, then keep falling below it */
+  const rainCfg = Object.assign({ enabled: true, density: 1, wind: -0.12, splash: true }, C.rain || {});
+  const canvas = $("#rain");
+  const ctx = canvas.getContext("2d");
+  const wind = rainCfg.wind;
+  let W = 0, H = 0, drops = [], splashes = [];
+  let shelter = null;
+
+  function resetDrop(d, anywhere) {
+    const z = Math.random();
+    const spread = H * Math.abs(wind);
+    d.x = Math.random() * (W + spread) - (wind > 0 ? spread : 0);
+    d.y = anywhere ? Math.random() * H : -Math.random() * 120 - 20;
+    d.len = 10 + z * 24;
+    d.v = 420 + z * 720;
+    d.a = 0.05 + z * 0.22;
+    d.w = 0.6 + z * 0.9;
+    return d;
+  }
+  function resizeRain() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.round((W * H) / 9000 * rainCfg.density);
+    drops = Array.from({ length: n }, () => resetDrop({}, true));
+    splashes = [];
+    if (reduceMotion) drawRain(0);
+  }
+  function spawnSplash(x, y) {
+    if (splashes.length > 240) return;
+    const n = 2 + ((Math.random() * 2) | 0);
+    for (let i = 0; i < n; i++) {
+      splashes.push({
+        x: x, y: y - 1,
+        vx: (Math.random() - 0.5) * 150 + wind * 160,
+        vy: -(70 + Math.random() * 110),
+        t: 0, life: 0.25 + Math.random() * 0.2,
+        r: 0.6 + Math.random() * 0.7,
+      });
+    }
+  }
+  function drawRain(dt) {
+    if (!rainCfg.enabled || !W) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.lineCap = "round";
+    const s = shelter;
+    for (const d of drops) {
+      if (dt) {
+        const prevY = d.y;
+        d.y += d.v * dt;
+        d.x += d.v * wind * dt;
+        if (s && prevY < s.top && d.y >= s.top && d.x > s.left + 16 && d.x < s.right - 16) {
+          if (Math.random() < 0.6) spawnSplash(d.x, s.top);
+          d.y = s.bottom + (d.y - s.top);
+        }
+        if (d.y - d.len > H) resetDrop(d, false);
+      }
+      ctx.strokeStyle = `rgba(${rainRGB}, ${d.a * rainStrength})`;
+      ctx.lineWidth = d.w;
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - d.len * wind, d.y - d.len);
+      ctx.stroke();
+    }
+    for (let i = splashes.length - 1; i >= 0; i--) {
+      const p = splashes[i];
+      if (dt) {
+        p.t += dt;
+        p.vy += 900 * dt;
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+      }
+      if (p.t >= p.life) { splashes.splice(i, 1); continue; }
+      ctx.fillStyle = `rgba(${rainRGB}, ${(1 - p.t / p.life) * 0.55 * rainStrength})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  if (rainCfg.enabled) window.addEventListener("resize", resizeRain);
+  else canvas.hidden = true;
+
+  /* Card edge light */
+  const wrap = $("#cardWrap");
+  const card = $("#card");
+  const glow = { a: 180, p: 0, ta: 180, tp: 0 };
+  let pointerSeen = false;
+
+  window.addEventListener("pointermove", (e) => {
+    if (e.pointerType === "touch") return;
+    pointerSeen = true;
+    const r = card.getBoundingClientRect();
+    const x = e.clientX, y = e.clientY;
+    const dx = x - (r.left + r.width / 2);
+    const dy = y - (r.top + r.height / 2);
+    glow.ta = (Math.atan2(dx, -dy) * 180 / Math.PI + 360) % 360;
+    const inside = x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+    if (inside) {
+      const edge = Math.min(x - r.left, r.right - x, y - r.top, r.bottom - y);
+      glow.tp = 1 - Math.min(edge / 140, 1);
+    } else {
+      const ox = Math.max(r.left - x, 0, x - r.right);
+      const oy = Math.max(r.top - y, 0, y - r.bottom);
+      glow.tp = 1 - Math.min(Math.hypot(ox, oy) / 220, 1);
+    }
+    card.style.setProperty("--inside", inside ? 1 : 0);
+    card.style.setProperty("--mx", ((x - r.left) / r.width) * 100 + "%");
+    card.style.setProperty("--my", ((y - r.top) / r.height) * 100 + "%");
+  }, { passive: true });
+
+  window.addEventListener("mouseout", (e) => {
+    if (!e.relatedTarget) {
+      glow.tp = 0;
+      card.style.setProperty("--inside", 0);
+    }
+  });
+
+  function updateGlow(dt) {
+    if (!canHover && !pointerSeen && revealed) {
+      glow.tp = 0.6;
+      if (!reduceMotion) glow.ta = (glow.ta + 50 * dt) % 360;
+    }
+    const k = 1 - Math.exp(-dt * 10);
+    const diff = ((glow.ta - glow.a + 540) % 360) - 180;
+    glow.a = (glow.a + diff * k + 360) % 360;
+    glow.p += (glow.tp - glow.p) * k;
+    wrap.style.setProperty("--angle", glow.a.toFixed(2) + "deg");
+    wrap.style.setProperty("--prox", glow.p.toFixed(3));
+  }
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min((now - last) / 1000, 0.05);
+    last = now;
+    shelter = (revealed && rainCfg.splash) ? card.getBoundingClientRect() : null;
+    if (rainCfg.enabled && !reduceMotion) drawRain(dt);
+    updateGlow(dt);
+    requestAnimationFrame(frame);
+  }
+
+  /* Enter screen: the crescent fills into a full moon, then the moon opens like an iris */
+  const enter = $("#enter");
+  const veil = $("#enterVeil");
+  const enterMoon = $("#enterMoon");
+  $("#enterText").textContent = C.enterText || "눌러주세요";
+
+  function reveal() {
+    if (revealed) return;
+    revealed = true;
+    body.classList.add("entered");
+  }
+
+  function doEnter() {
+    if (entered) return;
+    entered = true;
+    const m = enterMoon.getBoundingClientRect();
+    veil.style.setProperty("--cx", (m.left + m.width / 2) + "px");
+    veil.style.setProperty("--cy", (m.top + m.height / 2) + "px");
+    enter.classList.add("opening");
+    setTimeout(() => {
+      veil.style.transition = "none";
+      veil.style.setProperty("--hole", (m.width / 2) + "px");
+      void veil.offsetWidth;
+      veil.style.transition = "";
+      veil.style.setProperty("--hole", Math.ceil(Math.hypot(window.innerWidth, window.innerHeight)) + "px");
+      enter.classList.add("gone");
+      reveal();
+      setTimeout(() => enter.remove(), reduceMotion ? 60 : 1400);
+    }, reduceMotion ? 0 : 450);
+  }
+
+  syncTheme();
+  if (rainCfg.enabled) resizeRain();
+  requestAnimationFrame(frame);
+
+  if (C.enterScreen === false) {
+    enter.remove();
+    entered = true;
+    requestAnimationFrame(reveal);
+  } else {
+    enter.addEventListener("click", doEnter);
+    enter.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); doEnter(); }
+    });
+    enter.focus({ preventScroll: true });
+  }
+})();
+</script>
+</body>
+</html>
